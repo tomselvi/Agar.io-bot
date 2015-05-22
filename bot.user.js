@@ -383,8 +383,10 @@ allyList = ["cheese"];
 
     function getAllFood() {
         var dotList = [];
+
+        var elementList = [];
         
-        dotList = getListmasedOnFunction(function (element){
+        elementList = getListmasedOnFunction(function (element){
             var isMe = false, feedAlly;
             
             for (var i = 0; i < m.length; i++) {
@@ -399,9 +401,13 @@ allyList = ["cheese"];
                 for (var y = 0; y < allyList.length; y++)
                   if (v[element].name == allyList[y] && v[element].size >= m[i].size * 1.25)
                     feedAlly = true;
-                if (feedAlly || !isMe && !v[element].isVirus && (v[element].size * 1.25 <= m[i].size) || (v[element].size <= 11)){return true;} else{return false;}
+                if ((feedAlly || !isMe && !v[element].isVirus && (v[element].size * 1.25 <= m[i].size)) || (v[element].size <= 11)){return true;} else{return false;}
             }
         }, v);
+
+        for (var i = 0; i < elementList.length; i++) {
+            dotList.push([elementList[i].x, elementList[i].y, elementList[i].size]);
+        }
         
         return dotList;
     }
