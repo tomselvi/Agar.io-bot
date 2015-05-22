@@ -8,6 +8,8 @@
 // @author      twitch.tv/apostolique
 // ==/UserScript==
 
+allyList = ["cheese"];
+
 (function (g, q) {
   function wa() {
     ha();
@@ -345,9 +347,9 @@
     }
 
     function getAllThreats() {
-        var dotList = [];
+        var dotList = [], isAlly;
         
-        dotList = getListmasedOnFunction(function (element){
+        var elementList = getListmasedOnFunction(function (element){
             var isMe = false;
             
             for (var i = 0; i < m.length; i++) {
@@ -367,15 +369,23 @@
             }
         }, v);
         
+        for (var i = 0; i < elementList.length; i++) {
+            isAlly = false;
+            for (var y = 0; y < allyList.length; y++)
+              if (elementList[i].name == allyList[y])
+                isAlly = true;
+
+            if (!isAlly)
+                dotList.push(elementList[i]);
+        }
         return dotList;
     }
 
     function getAllFood() {
-        var elementList = [];
         var dotList = [];
         
-        elementList = getListmasedOnFunction(function (element){
-            var isMe = false;
+        dotList = getListmasedOnFunction(function (element){
+            var isMe = false, feedAlly;
             
             for (var i = 0; i < m.length; i++) {
                 if (v[element].id == m[i].id) {
@@ -385,13 +395,13 @@
             }
             
             for (var i = 0; i < m.length; i++) {
-                if (!isMe && !v[element].isVirus && (v[element].size * 1.25 <= m[i].size)  || (v[element].size <= 11)){return true;} else{return false;}
+                feedAlly = false;
+                for (var y = 0; y < allyList.length; y++)
+                  if (v[element].name == allyList[y] && v[element].size >= m[i].size * 1.25)
+                    feedAlly = true;
+                if (feedAlly || !isMe && !v[element].isVirus && (v[element].size * 1.25 <= m[i].size) || (v[element].size <= 11)){return true;} else{return false;}
             }
         }, v);
-        
-        for (var i = 0; i < elementList.length; i++) {
-            dotList.push([elementList[i].x, elementList[i].y, elementList[i].size]);
-        }
         
         return dotList;
     }
