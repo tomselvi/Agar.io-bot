@@ -402,7 +402,7 @@ allyList = ["cheese"];
                 for (var y = 0; y < allyList.length; y++)
                   if (v[element].name == allyList[y] && v[element].size >= m[i].size * 1.25)
                     feedAlly = true;
-                  else if (v[element.name] == allyList[y])
+                  else if (v[element].name == allyList[y])
                     isAlly = true;
                 if (feedAlly || !isAlly && !isMe && !v[element].isVirus && (v[element].size * 1.25 <= m[i].size) || (v[element].size <= 11)){return true;} else{return false;}
             }
