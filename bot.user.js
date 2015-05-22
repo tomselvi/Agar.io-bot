@@ -387,7 +387,7 @@ allyList = ["cheese"];
         var elementList = [];
         
         elementList = getListmasedOnFunction(function (element){
-            var isMe = false, feedAlly;
+            var isMe = false, feedAlly, isAlly;
             
             for (var i = 0; i < m.length; i++) {
                 if (v[element].id == m[i].id) {
@@ -398,10 +398,13 @@ allyList = ["cheese"];
             
             for (var i = 0; i < m.length; i++) {
                 feedAlly = false;
+                isAlly = false;
                 for (var y = 0; y < allyList.length; y++)
                   if (v[element].name == allyList[y] && v[element].size >= m[i].size * 1.25)
                     feedAlly = true;
-                if ((feedAlly || !isMe && !v[element].isVirus && (v[element].size * 1.25 <= m[i].size)) || (v[element].size <= 11)){return true;} else{return false;}
+                  else if (v[element.name] == allyList[y])
+                    isAlly = true;
+                if ((feedAlly || !isAlly !isMe && !v[element].isVirus && (v[element].size * 1.25 <= m[i].size)) || (v[element].size <= 11)){return true;} else{return false;}
             }
         }, v);
 
