@@ -9,6 +9,15 @@
 // ==/UserScript==
 
 allyList = ["cheese"];
+leaderboard = [];
+
+$(document).ready(function() {
+    var region = $("#region");
+    if (region.length) {
+        $("<div class=\"form-group\"><input id=\"serverInput\" class=\"form-control\" placeholder=\"255.255.255.255:443\" maxlength=\"20\"></input></div>").insertAfter("#helloDialog > form > div:nth-child(3)");
+        $("<div class=\"form-group\"><button disabled type=\"button\" id=\"connectBtn\" class=\"btn btn-warning btn-needs-server\" onclick=\"connect('ws://' + $('#serverInput').val());\" style=\"width: 100%\">Connect</button></div>").insertAfter($("#serverInput").parent());
+    }
+});
 
 (function (g, q) {
   function wa() {
@@ -1112,12 +1121,14 @@ allyList = ["cheese"];
       a.font = '30px Ubuntu';
       a.fillText(c, 100 - a.measureText(c).width / 2, 40);
       if (null == x) {
+        leaderboard = [];
         for (a.font = '20px Ubuntu', b = 0; b < w.length; ++b) {
             c = w[b].name || 'An unnamed cell',
               Y || (c = 'An unnamed cell'),
               - 1 != B.indexOf(w[b].id) ? (m[0].name && (c = m[0].name), a.fillStyle = '#FFAAAA')  : a.fillStyle = '#FFFFFF',
               c = b + 1 + '. ' + c,
               a.fillText(c, 100 - a.measureText(c).width / 2, 70 + 24 * b);
+            leaderboard.push(c);
         }
       } else for (b = c = 0; b < x.length; ++b) angEnd = c + x[b] * Math.PI * 2,
       a.fillStyle = Ga[b + 1],
