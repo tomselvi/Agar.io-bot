@@ -404,7 +404,7 @@ allyList = ["cheese"];
                     feedAlly = true;
                   else if (v[element.name] == allyList[y])
                     isAlly = true;
-                if ((feedAlly || !isAlly !isMe && !v[element].isVirus && (v[element].size * 1.25 <= m[i].size)) || (v[element].size <= 11)){return true;} else{return false;}
+                if (feedAlly || !isAlly && !isMe && !v[element].isVirus && (v[element].size * 1.25 <= m[i].size) || (v[element].size <= 11)){return true;} else{return false;}
             }
         }, v);
 
