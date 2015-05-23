@@ -1162,11 +1162,11 @@ $(document).ready(function() {
     e && (this._strokeColor = e)
   }
   if ('agar.io' != g.location.hostname && 'localhost' != g.location.hostname && '10.10.2.13' != g.location.hostname) g.location = 'http://agar.io/';
-   else if (g.top != g) g.top.location = 'http://agar.io/';
+   else if (false) g.top.location = 'http://agar.io/';
    else {
-    var $,
     toggle = false,
-    toggleDraw = false,
+    toggleDraw = false;
+    var $,
     splitted = false,
     splitting = false,
     virusBait = false,
