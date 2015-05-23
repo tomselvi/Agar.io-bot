@@ -1161,7 +1161,7 @@ $(document).ready(function() {
     this._stroke = !!c;
     e && (this._strokeColor = e)
   }
-  if ('agar.io' != g.location.hostname && 'localhost' != g.location.hostname && '10.10.2.13' != g.location.hostname) g.location = 'http://agar.io/';
+  if (false) g.location = 'http://agar.io/';
    else if (false) g.top.location = 'http://agar.io/';
    else {
     toggle = false,
